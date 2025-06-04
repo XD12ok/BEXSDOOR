@@ -20,7 +20,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'categories' => 'required|in:Nata Series,Yaza Series,Hogma Series,PVC,Glass',
-            'image' => 'nullable|image|max:5120', // Maks 5MB
+            'image' => 'nullable|image|max:10000',
             'description' => 'nullable|string|max:10000',
             'SKU' => 'nullable|string|max:255',
             'color' => 'nullable|string|max:255',
@@ -42,7 +42,8 @@ class ProductController extends Controller
             'SKU' => $validated['SKU'],
         ]);
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan!');
+
     }
 
     public function show($id)
@@ -86,7 +87,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'categories' => 'required|in:Nata Series,Yaza Series,Hogma Series,PVC,Glass',
-            'image' => 'nullable|image|max:5120',
+            'image' => 'nullable|image|max:10000',
             'description' => "nullable|string|max:255",
             'color'=> 'nullable|string|max:255',
             'SKU' => 'nullable|string|max:255',
@@ -109,7 +110,7 @@ class ProductController extends Controller
         $product->SKU = $validated['SKU'];
         $product->save();
 
-        return redirect()->route('products.show', $product->id)->with('success', 'Produk berhasil diperbarui!');
+            return redirect()->route('admin.products.paginate')->with('success', 'Produk berhasil diperbarui.');
     }
 
     public function index(Request $request)

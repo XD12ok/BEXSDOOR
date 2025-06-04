@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
         Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
         Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-        Route::delete('/products/{id}/edit', [ProductController::class, 'destroy'])->name('products.destroy');
+        Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
         Route::get('/admin/products', [ProductController::class, 'paginate'])->name('admin.products.paginate');
 
         // Transaksi

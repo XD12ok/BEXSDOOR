@@ -22,24 +22,30 @@
     {{-- Kategori --}}
     <section class="max-w-7xl mx-auto py-6 px-4">
         <h2 class="text-xl font-semibold mb-4">Categories</h2>
-        <div class="flex overflow-x-hidden gap-4">
-            <a href="{{ route('products.search', ['categories' => 'Nata Series']) }}">
-                <x-category-card title="Nata Series" image="/image/categories/nata.png"/>
-            </a>
-            <a href="{{route('products.search',['categories'=> 'Hogma Series']) }}">
-                <x-category-card title="Hogma Series" image="/image/categories/hogma.png"/>
-            </a>
-            <a href="{{route('products.search',['categories'=> 'Yaza Series']) }}">
-                <x-category-card title="Yaza Series" image="/image/categories/yaza.png"/>
-            </a>
-            <a href="{{route('products.search',['categories'=> 'PVC']) }}">
-                <x-category-card title="PVC" image="/image/categories/pvc.png"/>
-            </a>
-            <a href="{{route('products.search',['categories'=> 'Glass']) }}">
-                <x-category-card title="Glass" image="/image/categories/glass.png"/>
-            </a>
+    
+        <!-- Pembungkus scroll -->
+        <div class="overflow-x-auto">
+            <!-- Baris item kategori -->
+            <div class="flex gap-4 w-max">
+                <a href="{{ route('products.search', ['categories' => 'Nata Series']) }}" class="min-w-[160px]">
+                    <x-category-card title="Nata Series" image="/image/categories/nata.png"/>
+                </a>
+                <a href="{{ route('products.search', ['categories' => 'Hogma Series']) }}" class="min-w-[160px]">
+                    <x-category-card title="Hogma Series" image="/image/categories/hogma.png"/>
+                </a>
+                <a href="{{ route('products.search', ['categories' => 'Yaza Series']) }}" class="min-w-[160px]">
+                    <x-category-card title="Yaza Series" image="/image/categories/yaza.png"/>
+                </a>
+                <a href="{{ route('products.search', ['categories' => 'PVC']) }}" class="min-w-[160px]">
+                    <x-category-card title="PVC" image="/image/categories/pvc.png"/>
+                </a>
+                <a href="{{ route('products.search', ['categories' => 'Glass']) }}" class="min-w-[160px]">
+                    <x-category-card title="Glass" image="/image/categories/glass.png"/>
+                </a>
+            </div>
         </div>
     </section>
+    
 
     {{-- Produk Unggulan --}}
     <section class="max-w-7xl mx-auto py-6 px-4">

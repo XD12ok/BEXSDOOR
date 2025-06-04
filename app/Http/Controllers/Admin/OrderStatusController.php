@@ -25,7 +25,7 @@ class OrderStatusController extends Controller
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'status' => 'required|in:pending,paid,processing,shipped,completed,canceled',
+            'status' => 'required|in:pending,paid,processing,shipped,delivered,cancelled,failed',
         ]);
 
         $order->update(['status' => $request->status]);

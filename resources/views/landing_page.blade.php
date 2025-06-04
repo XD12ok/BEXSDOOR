@@ -62,7 +62,7 @@
                 Login
             </a>
             <a href="{{route('register')}}"
-               class="bg-gray-500 text-white px-2 py-1 rounded hover:bg-black-500">Register</a>
+               class="bg-green-600 text-white px-2 py-1 rounded hover:bg-gray-500">Register</a>
         @endguest
         <div class="md:hidden">
             <button id="menu-2button" class="text-black text-2xl focus:outline-none z-10">
@@ -78,29 +78,57 @@
     </div>
 
     <nav id="menu" class="hidden md:block w-full bg-black text-white rounded-lg shadow-lg md:mt-2 z-50 absolute top-20 left-0">
-
-        <a href="{{route('products.search')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <input type="text" placeholder="Search Product"
-                   class="w-full px-4 py-2 rounded-md border border-gray-300 text-white">
-        </a>
+        {{-- Search --}}
+        <div class="px-4 py-2">
+            <input
+                type="text"
+                placeholder="Search Product"
+                class="w-full px-4 py-2 rounded-md border border-gray-300 text-black"
+            />
+        </div>
+    
         <hr class="border-gray-600">
-        <a href="{{route('userDashboard')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <i class="fas fa-user mr-2"></i> Profil
-        </a>
-        <a href="{{route('cart.index')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <i class="fas fa-shopping-cart mr-2"></i> Keranjang
-        </a>
+    
+        {{-- Authenticated Links --}}
+        @auth
+            <div class="flex flex-col md:flex-row items-start md:items-center px-4 py-2 gap-2">
+                <a href="{{ route('userDashboard') }}" class="flex items-center gap-1 text-white hover:text-gray-300">
+                    <span class="material-symbols-outlined">person</span> Dashboard
+                </a>
+                <a href="{{ route('cart.index') }}" class="flex items-center gap-1 text-white hover:text-gray-300">
+                    <span class="material-symbols-outlined">shopping_cart</span> Cart
+                </a>
+            </div>
+        @endauth
+    
+        {{-- Guest Links --}}
+        @guest
+            <div class="flex flex-col md:flex-row px-4 py-2 gap-2">
+                <a href="{{ route('login') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 text-center">
+                    Login
+                </a>
+                <a href="{{ route('register') }}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-gray-600 text-center">
+                    Register
+                </a>
+            </div>
+        @endguest
+    
         <hr class="border-gray-600">
-        <a href="{{route('home')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <i class="fas fa-home mr-2"></i> Beranda
-        </a>
-        <a href="{{route('aboutUs')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <i class="fas fa-info-circle mr-2"></i> Tentang
-        </a>
-        <a href="{{route('products.search')}}" class="block px-4 py-2 hover:bg-gray-700">
-            <i class="fas fa-door-open mr-2"></i> Produk
-        </a>
+    
+        {{-- Main Navigation --}}
+        <div class="flex flex-col px-4 py-2 gap-2">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 hover:bg-gray-700 px-4 py-2 rounded">
+                <i class="fas fa-home"></i> Beranda
+            </a>
+            <a href="{{ route('aboutUs') }}" class="flex items-center gap-2 hover:bg-gray-700 px-4 py-2 rounded">
+                <i class="fas fa-info-circle"></i> Tentang
+            </a>
+            <a href="{{ route('products.search') }}" class="flex items-center gap-2 hover:bg-gray-700 px-4 py-2 rounded">
+                <i class="fas fa-door-open"></i> Produk
+            </a>
+        </div>
     </nav>
+    
     <section class="relative h-screen flex flex-col-reverse md:flex-row items-center justify-center">
 
         <div class="absolute inset-0 clip-diagonal"></div>

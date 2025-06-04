@@ -22,6 +22,7 @@
                 </div>
             @endif
 
+            {{-- Form Update --}}
             <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data" class="space-y-5">
                 @csrf
                 @method('PUT')
@@ -52,8 +53,10 @@
 
                 <div>
                     <label class="block text-gray-700 font-medium mb-1">Deskripsi:</label>
-                    <input type="text" name="description" value="{{ old('description', $product->description) }}" required
-                           class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                     <textarea name="description" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                         {{ old('description', $product->description) }}
+                     </textarea>
+                    
                 </div>
 
                 <div>
@@ -78,17 +81,19 @@
                             class="flex-grow bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
                         Perbarui Produk
                     </button>
-
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus produk ini?')" class="flex-shrink-0">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                                class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
-                            Hapus
-                        </button>
-                    </form>
-                </div>
             </form>
+
+            {{-- Form Hapus --}}
+            <form action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus produk ini?')" class="flex-shrink-0">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                        class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                    Hapus
+                </button>
+            </form>
+        </div>
+
         </div>
     </div>
 @endsection
