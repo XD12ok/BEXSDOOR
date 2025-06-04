@@ -48,19 +48,14 @@ class AdminController extends Controller
             ->selectRaw('SUM(price * quantity) as total')
             ->value('total') ?? 0;
 
-        return view('admin.dashboard', [
-            'totalPenjualan' => $totalPenjualan,
-            'jumlahTransaksi' => $jumlahTransaksi,
-            'penjualanTerakhir' => $penjualanTerakhir,
-            'produkPopuler' => $produkPopuler,
-            'totalPenjualan' => $totalPenjualan,
-            'jumlahTransaksi' => $jumlahTransaksi,
-            'penjualanTerakhir' => $penjualanTerakhir,
-            'produkPopuler' => $produkPopuler,
-            'penjualanPerBulan' => $penjualanPerBulan,
-            'pendapatanBulanIni' => $pendapatanBulanIni,
-            'pendapatanTahunIni' => $pendapatanTahunIni,
-        ]);
-
+        return view('admin.dashboard', compact(
+            'totalPenjualan',
+            'jumlahTransaksi',
+            'penjualanTerakhir',
+            'produkPopuler',
+            'penjualanPerBulan',
+            'pendapatanBulanIni',
+            'pendapatanTahunIni'
+        ));
     }
 }

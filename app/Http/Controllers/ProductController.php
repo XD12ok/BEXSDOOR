@@ -178,7 +178,7 @@ class ProductController extends Controller
             return view('admin.products.partials.table', compact('products'))->render();
         }
 
-        return view('Admin.InfoProduk', compact('products'));
+        return view('admin.InfoProduk', compact('products'));
     }
 
 

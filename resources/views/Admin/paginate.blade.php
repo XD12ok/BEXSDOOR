@@ -5,7 +5,7 @@
         <h1 class="text-2xl font-bold mb-4">Products</h1>
 
         <div id="product-table">
-            @include('Admin.InfoProduk')
+            @include('admin.InfoProduk')
         </div>
     </div>
 @endsection
