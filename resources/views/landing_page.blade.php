@@ -51,7 +51,6 @@
         @auth
             <a href="{{route('userdashboard')}}" class="text-black"> <span class="material-symbols-outlined">
                 person</span></a>
-            <a href="/logout" class="hover:underline text-red-700">Logout</a>
             <a href="{{route('cart.index')}}" class="text-black">
                 <span class="material-symbols-outlined">
                     shopping_cart</span>
