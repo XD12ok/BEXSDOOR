@@ -35,13 +35,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Admin & user menu dan akses
-    Route::get('/admin', [AdminController::class, 'redirect'])->name('admin.menu')->middleware('userAccess:admin');
+    Route::get('/admin', [AdminController::class, 'redirect'])->name('admin.menu')->middleware('UserAccess:admin');
 
-    Route::get('/AdminMenu', [AdminController::class, 'admin'])->middleware('userAccess:admin');
-    Route::get('/home', [AdminController::class, 'user'])->middleware('userAccess:user');
+    Route::get('/AdminMenu', [AdminController::class, 'admin'])->middleware('UserAccess:admin');
+    Route::get('/home', [AdminController::class, 'user'])->middleware('UserAccess:user');
 
     // Produk (admin only)
-    Route::middleware('userAccess:admin')->group(function () {
+    Route::middleware('UserAccess:admin')->group(function () {
         Route::get('/products', [ProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 
@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/products/{id}/edit', [ProductController::class, 'destroy'])->name('products.destroy');
     });
 
-    Route::middleware('userAccess:admin')->group(function () {
+    Route::middleware('UserAccess:admin')->group(function () {
         Route::get('/orders', [OrderStatusController::class, 'index'])->name('admin.orders.index');
         Route::get('/orders/{order}/edit', [OrderStatusController::class, 'edit'])->name('admin.orders.edit');
         Route::put('/orders/{order}', [OrderStatusController::class, 'update'])->name('admin.orders.update');
@@ -82,7 +82,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/{order}', [CheckoutController::class, 'show'])->name('orders.show');
 
     //user dashboard
-    Route::get('user/dashboard', [UserController::class, 'dashboard'])->name('userdashboard');
+    Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('userdashboard');
     Route::put('/profil', [UserController::class, 'update'])->name('profil.update');
 
 });
