@@ -49,7 +49,7 @@
         </div>
         <div class="hidden md:flex space-x-4">
         @auth
-            <a href="{{route('userdashboard')}}" class="text-black"> <span class="material-symbols-outlined">
+            <a href="{{route('userDashboard')}}" class="text-black"> <span class="material-symbols-outlined">
                 person</span></a>
             <a href="{{route('cart.index')}}" class="text-black">
                 <span class="material-symbols-outlined">
@@ -84,7 +84,7 @@
                    class="w-full px-4 py-2 rounded-md border border-gray-300 text-white">
         </a>
         <hr class="border-gray-600">
-        <a href="{{route('userdashboard')}}" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('userDashboard')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-user mr-2"></i> Profil
         </a>
         <a href="{{route('cart.index')}}" class="block px-4 py-2 hover:bg-gray-700">

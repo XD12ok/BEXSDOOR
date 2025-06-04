@@ -11,9 +11,12 @@ class UserAccess
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  $role
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, string $role): Response
     {
         if (!auth()->check()) {
             return redirect('/login');
@@ -23,14 +26,13 @@ class UserAccess
             return $next($request);
         }
 
-        // Redirect berdasarkan role user
+        // Redirect berdasarkan role
         if (auth()->user()->role === 'admin') {
             return redirect('/Admin/AdminMenu');
         } elseif (auth()->user()->role === 'user') {
             return redirect('/home');
         }
 
-        // Kalau role-nya tidak dikenal
         return abort(403, 'Unauthorized.');
     }
 }

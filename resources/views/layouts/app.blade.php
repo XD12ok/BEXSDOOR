@@ -38,7 +38,7 @@
                    class="w-full h-[35px] pl-2 mx-2 rounded-b-lg rounded-t-lg bg-white">
         </form>
         @auth
-            <a href="{{route ('userdashboard')}}" class="text-white"> <span class="material-symbols-outlined">
+            <a href="{{route ('userDashboard')}}" class="text-white"> <span class="material-symbols-outlined">
                 person</span></a>
             <a href="{{route('cart.index')}}" class="text-white">
                 <span class="material-symbols-outlined">

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function dashboard() {
-        return view('userdashboard');
+        return view('userDashboard');
     }
 
     public function update(Request $request)
