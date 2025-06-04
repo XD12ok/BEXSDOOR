@@ -5,7 +5,7 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="fixed top-0 left-0 bottom-0 w-44 bg-black py-4 transform -translate-x-full md:translate-x-0 md:static md:flex md:flex-col transition-transform duration-300 ease-in-out z-40">
         <button class="text-white font-semibold px-5 py-3 text-left border-l-4 border-yellow-400 bg-blue-800">Profil Saya</button>
-        <a href="{{route('userdashboard')}}" class="text-white font-semibold px-5 py-3 text-left hover:bg-blue-500 w-full">Profil Saya</a>
+        <a href="{{route('userDashboard')}}" class="text-white font-semibold px-5 py-3 text-left hover:bg-blue-500 w-full">Profil Saya</a>
         <a href="{{route('orders.history')}}" class="text-white font-semibold px-5 py-3 text-left border-l-4 hover:bg-blue-500 bg-blue-800 border-yellow-400 w-full">Pesanan Saya</a>
     </nav>
 
