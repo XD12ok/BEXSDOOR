@@ -37,7 +37,7 @@
             <a href="{{route('home')}}"><img src="image/logos-removebg-preview 1.png" alt="logo" class="w-16"></a>
         </div>
         <nav class="hidden md:flex space-x-8 mr-4 ">
-            <a href="#" class="hover:text-yellow-500">Tentang</a>
+            <a href="{{route('aboutUs')}}" class="hover:text-yellow-500">Tentang</a>
             <a href="{{route('products.search')}}" class="hover:text-yellow-500">Produk</a>
         </nav>
 
@@ -49,7 +49,7 @@
         </div>
         <div class="hidden md:flex space-x-4">
         @auth
-            <a href="#" class="text-black"> <span class="material-symbols-outlined">
+            <a href="{{route('userdashboard')}}" class="text-black"> <span class="material-symbols-outlined">
                 person</span></a>
             <a href="/logout" class="hover:underline text-red-700">Logout</a>
             <a href="{{route('cart.index')}}" class="text-black">
@@ -80,7 +80,7 @@
 
     <nav id="menu" class="hidden md:block w-full bg-black text-white rounded-lg shadow-lg md:mt-2 z-50 absolute top-20 left-0">
 
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('products.search')}}" class="block px-4 py-2 hover:bg-gray-700">
             <input type="text" placeholder="Search Product"
                    class="w-full px-4 py-2 rounded-md border border-gray-300 text-white">
         </a>
@@ -88,17 +88,17 @@
         <a href="{{route('userdashboard')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-user mr-2"></i> Profil
         </a>
-        <a href="{{route('order/')}}" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('cart.index')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-shopping-cart mr-2"></i> Keranjang
         </a>
         <hr class="border-gray-600">
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('home')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-home mr-2"></i> Beranda
         </a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('aboutUs')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-info-circle mr-2"></i> Tentang
         </a>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-700">
+        <a href="{{route('products.search')}}" class="block px-4 py-2 hover:bg-gray-700">
             <i class="fas fa-door-open mr-2"></i> Produk
         </a>
     </nav>

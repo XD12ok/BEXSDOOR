@@ -29,7 +29,7 @@
         <a href="{{route('home')}}"><img src="/image/logos-removebg-preview 1.png" class="h-[40px] w-full scale-120 mt-1"></a>
 
         <ul class="flex gap-4 text-sm text-white">
-            <li><a href="#" class="hover:underline">Tentang</a></li>
+            <li><a href="{{route('aboutUs')}}" class="hover:underline">Tentang</a></li>
             <li><a href="{{route('products.search')}}" class="hover:underline">Product</a></li>
 
         </ul>
