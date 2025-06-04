@@ -43,10 +43,6 @@ Route::middleware('auth')->group(function () {
     // Logout
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Redirection by role
-    Route::get('/admin', [AdminController::class, 'redirect'])->name('admin.dashboard')
-        ->middleware(UserAccess::class . ':admin');
-
     // =======================
     // 🛠 Admin Only
     // =======================
