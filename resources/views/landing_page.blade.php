@@ -149,15 +149,17 @@
                 Buy Now
             </a>
         </div>
-        <model-viewer
-            src="image/house_door.glb"
-            class=" items-center relative w-full md:w-1/3 sm:w-1/2 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] "
-            camera-controls
-            auto-rotate
-            style="background: transparent;">
-        </model-viewer>
-    </section>
 
+      <model-viewer
+                  src="image/house_door.glb"
+                  class=" items-center relative w-full md:w-1/3 sm:w-1/2 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] "
+                  camera-controls
+                  auto-rotate
+                  style="background: transparent;">
+              </model-viewer>
+        
+    </section>
+    
     </section>
 
 

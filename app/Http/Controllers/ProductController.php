@@ -20,7 +20,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'categories' => 'required|in:Nata Series,Yaza Series,Hogma Series,PVC,Glass',
-            'image' => 'nullable|image|max:10000',
+            'image' => 'nullable|image|max:10000', // Maks 10MB
             'description' => 'nullable|string|max:10000',
             'SKU' => 'nullable|string|max:255',
             'color' => 'nullable|string|max:255',
