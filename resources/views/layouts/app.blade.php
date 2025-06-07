@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>BEXSDOOR</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    @vite('resources/css/app.css')
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon"/>
-    <title>Peta Lokasi Toko</title>
-    <!-- Leaflet CSS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- CSRF Token for Laravel -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <title>BEXSDOOR - Peta Lokasi Toko</title>
+
+    <!-- Google Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" integrity="sha384-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Vite CSS -->
+    @vite('resources/css/app.css')
+
+    <!-- Custom Map Styling -->
     <style>
         #map {
             height: 500px;
@@ -21,6 +31,22 @@
         }
     </style>
 </head>
+<body>
+
+<!-- Konten halaman di sini -->
+
+<!-- Swiper JS (bisa di-defer untuk performa) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+<!-- Vite JS (otomatis include js dari @vite) -->
+@vite('resources/js/app.js')
+
+</body>
+</html>
+
 
 {{-- Navbar sederhana --}}
 <nav class="bg-black shadow px-4 py-3 sticky top-0 z-50">
