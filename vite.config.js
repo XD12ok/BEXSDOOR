@@ -10,4 +10,11 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    server: {
+        host: 'localhost.test',  // gunakan domain yang sama dengan APP_URL
+        port: 5173,
+        hmr: {
+            host: 'localhost.test', // sama seperti domain kamu akses dari browser
+        },
+    },
 });

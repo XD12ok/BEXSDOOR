@@ -28,7 +28,7 @@
         </div>
 
         <!-- Form -->
-        <form action= " " method="POST" class="w-full max-w-sm space-y-3">
+        <form action= "" method="POST" class="w-full max-w-sm space-y-3">
             @csrf
             <a href="{{ url('/auth/google') }}">
                 <button type="button" class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-100">
