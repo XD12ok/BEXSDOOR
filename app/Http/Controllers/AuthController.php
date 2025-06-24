@@ -24,9 +24,14 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:6|confirmed',
             'checkbox' => 'required'
-        ]);
+        ],
+            [   'name.required' => "Nama dibutuhkan.",
+                'email.required' => "Email dibutuhkan.",
+                'password.required' => "Password dibutuhkan dan minimal 6 karakter.",
+                'checkbox.required' => "Anda perlu menyetujui ketentuan dan privasi kami.",
+                'password_confirmation.confirmed' => "Password tidak cocok.",]);
 
         User::create([
             'name' => $request->name,
@@ -45,9 +50,9 @@ class AuthController extends Controller
             'password' => 'required|string',
             'checkbox' => 'required'
        ],
-            ['email.required' => 'Email is required.',
-            'password.required' => 'Password is required.',
-            'checkbox.required' => 'You must agree to our terms and conditions.',]);
+            ['email.required' => 'Email dibutuhkan.',
+            'password.required' => 'Password dibutuhkan.',
+            'checkbox.required' => 'Anda perlu menyetujui ketentuan dan privasi kami.',]);
 
         $infologin = [
             'email' =>$request->email,

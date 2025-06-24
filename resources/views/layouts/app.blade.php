@@ -7,7 +7,7 @@
     <!-- CSRF Token for Laravel -->
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>BEXSDOOR - Peta Lokasi Toko</title>
+    <title>BEXSDOOR</title>
 
     <!-- Google Material Symbols -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

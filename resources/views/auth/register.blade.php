@@ -28,8 +28,6 @@
         </div>
 
         <!-- Form -->
-
-
         <form method="POST" action="{{ route('registerProcess') }}" class="w-full max-w-sm space-y-3">
         @csrf
             <input type="email" placeholder="E-mail" name="email"
@@ -54,6 +52,16 @@
             <div class="text-center text-sm">
                 have an account? <a href="{{route ('login')}}" class="text-blue-500">Sign in</a>
             </div>
+            @if($errors -> any())
+                <div class="alert text-[#FF0000]">
+                    <ul>
+                        @foreach($errors->all() as $item)
+                            <li>{{$item}}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </div>
 

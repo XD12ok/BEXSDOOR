@@ -67,6 +67,24 @@ class CheckoutController extends Controller
             }
 
             //buat order
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'alamat' => 'required',
+                'kecamatan' => 'required',
+                'kelurahan' => 'required',
+                'kode_pos' => 'required',
+//            ], [
+//                'name.required' => 'Nama harus diisi',
+//                'email.required' => 'Email harus diisi',
+//                'phone.required' => 'Nomor telepon harus diisi',
+//                'alamat.required' => 'Alamat harus diisi',
+//                'kecamatan.required' => 'Kecamatan harus diisi',
+//                'kelurahan.required' => 'Kelurahan harus diisi',
+//                'kode_pos.required' => 'Kode pos harus diisi',
+            ]);
+
             $order = Order::create([
                 'user_id'    => auth()->id(),
                 'order_code' => 'ORD-' . strtoupper(Str::random(8)),
@@ -130,8 +148,7 @@ class CheckoutController extends Controller
                 'midtrans' => $response,
             ]);
         } catch (\Exception $e) {
-            \Log::error('Checkout error: ' . $e->getMessage());
-            return response()->json(['error' => 'Terjadi kesalahan: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Terjadi kesalahan: Isi formulir dengan benar'], 500);
         }
     }
 

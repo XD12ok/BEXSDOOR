@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="w-full max-w-6xl mx-auto">
-        <div class="swiper heroSwiper rounded-4xl my-8 h-[38vh] sm:h-[40vh] md:h-[400px]">
+        <div class="swiper heroSwiper my-8 h-[38vh] sm:h-[40vh] md:h-[400px]">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="/image/carousel/Group 70.png" class="drop-shadow-lg h-full w-full object-cover" alt="Hero 1">
