@@ -1,29 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex min-h-screen  bg-white">
-        <!-- Sidebar -->
-        <nav id="sidebar" class="top-0 left-0 bottom-0 w-44 bg-black py-4 transform -translate-x-full md:translate-x-0 md:static md:flex md:flex-col transition-transform duration-300 ease-in-out z-40">
-            <a href="{{route('userDashboard')}}" class="text-white font-semibold px-5 py-3 text-left border-l-4 hover:bg-blue-500 bg-blue-800 border-yellow-400 w-full">Profil Saya</a>
-            <a href="{{route('orders.history')}}" class="text-white font-semibold px-5 py-3 text-left hover:bg-blue-500 w-full">Pesanan Saya</a>
-        </nav>
-
-        <!-- Overlay sidebar (untuk mobile) -->
-        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
-
-        <div class="flex flex-col flex-grow">
-            <!-- Hamburger button mobile -->
-            <header class="bg-white p-4 shadow-md md:hidden flex items-center">
-                <button id="hamburger-btn" aria-label="Toggle sidebar" class="text-gray-700 focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                <h1 class="ml-4 text-xl font-semibold text-gray-900">Profil Saya</h1>
-            </header>
-
+    <div class="flex min-h-screen bg-white">
             <!-- Main content -->
-            <main class="flex-grow p-6 md:ml-44 overflow-y-auto min-h-screen">
+            <main class="flex-grow p-6 overflow-y-auto min-h-screen">
                 <section id="profil" class="max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-8 border-b pb-3">Profil Saya</h2>
 
@@ -98,35 +78,4 @@
                 </section>
             </main>
         </div>
-    </div>
-
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const overlay = document.getElementById('overlay');
-
-        function toggleSidebar() {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
-            overlay.classList.toggle('block');
-        }
-
-        hamburgerBtn?.addEventListener('click', toggleSidebar);
-        overlay?.addEventListener('click', toggleSidebar);
-
-        // Edit Profil toggle
-        const editBtn = document.getElementById('edit-profil-btn');
-        const profilView = document.getElementById('profil-view');
-        const profilEdit = document.getElementById('profil-edit');
-
-        editBtn?.addEventListener('click', () => {
-            profilView.classList.add('hidden');
-            profilEdit.classList.remove('hidden');
-        });
-
-        function cancelEdit() {
-            profilEdit.classList.add('hidden');
-            profilView.classList.remove('hidden');
-        }
-    </script>
 @endsection

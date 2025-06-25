@@ -3,7 +3,15 @@
 @section('content')
     <div class="min-h-screen bg-gray-100 flex justify-center">
         <div class="w-full max-w-4xl bg-white p-6 shadow-lg rounded-lg mt-6">
-            <h1 class="text-xl font-bold mb-4">Keranjang Belanja</h1>
+            <div class=" flex justify-between mb-5">
+                <h1 class="text-xl font-bold mb-4">Keranjang Belanja</h1>
+                <a href="{{route('orders.history')}}">
+                    <button class="bg-black rounded-2xl text-white py-2 px-4 rounded hover:bg-gray-800">
+                        Riwayat belanja
+                    </button>
+                </a>
+
+            </div>
 
             <!-- ✅ DAFTAR PRODUK -->
             @foreach($cartItems as $item)
@@ -47,8 +55,8 @@
                             onclick="if(confirm('Hapus item ini?')) document.getElementById('delete-form-{{ $item->id }}').submit();"
                             class="text-red-600 hover:text-red-800 font-bold ml-2"
                         ><span class="material-symbols-outlined">
-delete
-</span></button>
+                                                                        delete
+                                                                </span></button>
 
                         <form id="delete-form-{{ $item->id }}"
                               action="{{ route('cart.remove', $item->id) }}"
