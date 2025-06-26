@@ -100,6 +100,8 @@
 
                         <textarea name="alamat" placeholder="Alamat lengkap" class="w-full border px-3 py-2 rounded" required>{{ old('alamat',Auth::user()->alamat ?? '') }}</textarea>
 
+                        <div class="text-sm mx-auto w-fit text-gray-500 text-center">Pastikan formulir diisi dengan benar dan tepat!</div>
+
                         <button type="button" id="pay-button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
                             Pembayaran
                         </button>
