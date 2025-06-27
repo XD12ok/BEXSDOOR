@@ -38,8 +38,8 @@
 
 <!-- Sidebar -->
 <aside id="sidebar"
-       class="fixed top-0 left-0 bottom-0 w-64 bg-[#89652f] text-white p-4 flex flex-col h-screen z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto">
-    <div class="text-2xl font-bold mb-8 flex items-center gap-2">
+       class="fixed top-0 left-0 bottom-0 w-64 bg-[#89652f] lg:block text-white p-4 flex flex-col h-screen z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto">
+    <div class=" mb-8 flex items-center gap-2">
         <img src="/image/logos-removebg-preview 1.png" alt="Logo" class="w-40" />
     </div>
     <nav class="flex-1 space-y-6">
@@ -70,7 +70,7 @@
     </nav>
 </aside>
 
-<main class="p-4 lg:ml-64">
+<main class="p-4 transition-all duration-300 lg:ml-64">
     @yield('content')
 </main>
 
