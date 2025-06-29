@@ -1,8 +1,8 @@
 @extends('layouts.adminApp')
 
 @section('content')
-    <div class="min-h-screen bg-gray-100 py-10">
-        <div class="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-8">
+    <div class="min-h-screen bg-[#fef9f4] py-10">
+        <div class="max-w-xl mx-auto shadow-lg rounded-xl p-8">
 
             <h2 class="text-2xl font-semibold mb-6 text-gray-800">Edit Produk</h2>
 
@@ -56,7 +56,7 @@
                      <textarea name="description" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                          {{ old('description', $product->description) }}
                      </textarea>
-                    
+
                 </div>
 
                 <div>
@@ -73,12 +73,12 @@
 
                 <div>
                     <label class="block text-gray-700 font-medium mb-1">Gambar (opsional):</label>
-                    <input type="file" name="image" accept="image/*" class="w-full">
+                    <input type="file" name="image" accept="image/*" class="w-full border bg-blue-600 text-white rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="pt-4 flex gap-4">
                     <button type="submit"
-                            class="flex-grow bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+                            class="flex-grow bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">
                         Perbarui Produk
                     </button>
             </form>
@@ -93,7 +93,5 @@
                 </button>
             </form>
         </div>
-
         </div>
-    </div>
 @endsection

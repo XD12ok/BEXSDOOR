@@ -1,9 +1,9 @@
 @extends('layouts.adminApp')
 
 @section('content')
-    <div class="min-h-screen bg-gray-100 py-10">
-        <div class="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-8">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-800">tambah Produk</h2>
+    <div class="min-h-screen bg-[#fef9f4] py-10">
+        <div class="max-w-xl mx-auto  shadow-lg rounded-xl p-8">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Tambah Produk</h2>
 
             @if (session('success'))
                 <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Simpan Produk</button>
+                    <button type="submit" class="w-full text-white bg-green-600  py-2 rounded hover:bg-green-700 transition">Simpan Produk</button>
                 </div>
             </form>
         </div>
