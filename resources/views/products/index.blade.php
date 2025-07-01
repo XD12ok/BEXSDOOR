@@ -5,8 +5,10 @@
 
         <!-- Tombol Filter (Mobile) -->
         <div class="md:hidden mb-4 flex justify-end">
-            <button onclick="openFilterPopup()" class="px-4 py-2 bg-black text-white rounded shadow hover:bg-gray-800 transition">
-                Filter
+            <button onclick="openFilterPopup()" class=" px-3 py-1 bg-black text-white rounded-4xl shadow hover:bg-gray-800 transition">
+                <span class="material-symbols-outlined pt-2">
+                    tune
+                </span>
             </button>
         </div>
 
@@ -97,9 +99,9 @@
     </div>
 
     <!-- Popup Filter (Mobile) -->
-    <div id="filterPopup" class="fixed inset-0 z-50 bg-black/40 hidden items-end md:hidden" onclick="closeFilterPopup()">
+    <div id="filterPopup" class="fixed inset-0 z-50 bg-black/40 flex items-end md:hidden" onclick="closeFilterPopup()">
         <div onclick="event.stopPropagation()" id="popupContent"
-             class="w-full bg-white rounded-t-2xl p-5 max-h-[90%] overflow-y-auto transform translate-y-full transition-transform duration-300">
+             class="w-full bg-white rounded-t-2xl p-5 max-h-[60%] overflow-y-auto transform -translate-y transition-transform duration-300">
 
             <div class="flex justify-between items-center mb-4">
                 <h2 class="text-lg font-semibold">Filter Produk</h2>

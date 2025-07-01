@@ -139,7 +139,6 @@ class CheckoutController extends Controller
 
             $order->update([
                 'snap_token' => $response->token,
-                'payment_type' => 'bank_transfer',
             ]);
 
             return response()->json([

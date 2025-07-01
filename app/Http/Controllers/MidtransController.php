@@ -4,66 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Midtrans\Config;
+use Midtrans\Notification;
+use Illuminate\Support\Facades\Log;
 
 class MidtransController extends Controller
 {
-    public function handle(Request $request)
+    public function handleCallback(Request $request)
     {
-        \Log::info('Midtrans callback received', $request->all()); // Log untuk debugging
+        // Konfigurasi Midtrans
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = env('MIDTRANS_IS_PRODUCTION', false);
 
-        $serverKey = env('MIDTRANS_SERVER_KEY');
+        try {
+            // Ambil data notifikasi dari Midtrans
+            $notification = new Notification();
 
-        // Validasi signature
-        $expectedSignature = hash('sha512',
-            $request->order_id . $request->status_code . $request->gross_amount . $serverKey
-        );
+            $orderId = $notification->order_id;
+            $transactionStatus = $notification->transaction_status;
+            $paymentType = $notification->payment_type;
+            $grossAmount = $notification->gross_amount;
+            $signatureKey = $request->signature_key;
 
-        if ($expectedSignature !== $request->signature_key) {
-            return response(['message' => 'Invalid signature'], 403);
+            Log::info('Midtrans Callback', [
+                'order_id' => $orderId,
+                'status' => $transactionStatus,
+                'payment_type' => $paymentType,
+            ]);
+
+            // Validasi signature
+            $expectedSignature = hash('sha512', $orderId . $request->status_code . $grossAmount . Config::$serverKey);
+            if ($signatureKey !== $expectedSignature) {
+                return response()->json(['message' => 'Invalid signature'], 403);
+            }
+
+            // Temukan pesanan
+            $order = Order::where('order_code', $orderId)->first();
+            if (!$order) {
+                return response()->json(['message' => 'Order not found'], 404);
+            }
+
+            // Mapping status Midtrans ke status sistem
+            $newStatus = match ($transactionStatus) {
+                'settlement', 'capture' => 'paid',
+                'pending' => 'pending',
+                'cancel', 'expire', 'deny' => 'failed',
+                default => $order->status, // tidak mengubah
+            };
+
+            $order->status = $newStatus;
+            $order->payment_type = $paymentType;
+            $order->save();
+
+            return response()->json(['message' => 'Order updated to: ' . $newStatus], 200);
+
+        } catch (\Exception $e) {
+            Log::error('Midtrans Callback Error:', ['error' => $e->getMessage()]);
+            return response()->json(['message' => 'Callback failed'], 500);
         }
-
-        // Validasi input yang dibutuhkan
-        $validated = $request->validate([
-            'order_id' => 'required|string',
-            'status_code' => 'required|string',
-            'gross_amount' => 'required|numeric',
-            'transaction_status' => 'required|string',
-            'signature_key' => 'required|string',
-        ]);
-
-        // Validasi status yang diperbolehkan
-        $validStatuses = ['settlement', 'capture', 'pending', 'expire', 'cancel', 'deny'];
-        if (!in_array($request->transaction_status, $validStatuses)) {
-            return response(['message' => 'Invalid transaction status'], 400);
-        }
-
-        // Temukan order berdasarkan order_code
-        $order = Order::where('order_code', $request->order_id)->first();
-        if (!$order) {
-            return response(['message' => 'Order not found'], 404);
-        }
-
-        // Update status pesanan sesuai dengan status transaksi
-        switch ($request->transaction_status) {
-            case 'settlement':
-            case 'capture':
-                $order->status = 'paid';
-                break;
-
-            case 'pending':
-                $order->status = 'pending';
-                break;
-
-            case 'expire':
-            case 'cancel':
-            case 'deny':
-                $order->status = 'failed';
-                break;
-        }
-
-        $order->save();
-
-        return response(['message' => 'Order updated successfully'], 200);
     }
-
 }

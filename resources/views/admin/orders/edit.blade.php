@@ -11,11 +11,10 @@
         <form action="{{ route('admin.orders.update', $order->id) }}" method="POST">
             @csrf
             @method('PUT')
-
             <div class="mb-4">
                 <label class="block font-semibold mb-1">Status</label>
                 <select name="status" class="w-full border rounded p-2">
-                    @foreach(['pending', 'paid', 'processing', 'shipped', 'delivered', 'cancelled', 'failed'] as $status)
+                    @foreach(['pending', 'paid', 'processing', 'shipped', 'delivered','success', 'cancelled', 'failed'] as $status)
                         <option value="{{ $status }}" {{ $order->status == $status ? 'selected' : '' }}>
                             {{ ucfirst($status) }}
                         </option>
