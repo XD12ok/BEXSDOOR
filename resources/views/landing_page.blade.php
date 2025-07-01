@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bexsdoor</title>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js" integrity="sha384-sr9b4Ux0WhAUGclJ0ym0FSY2zSOMmNSn0bP/SA0e6bNCrpn/5W3QL8mm+LdlQMKw" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="css/landing.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon"/>
@@ -86,9 +86,9 @@
                 class="w-full px-4 py-2 rounded-md border border-gray-300 text-black"
             />
         </div>
-    
+
         <hr class="border-gray-600">
-    
+
         {{-- Authenticated Links --}}
         @auth
             <div class="flex flex-col md:flex-row items-start md:items-center px-4 py-2 gap-2">
@@ -100,7 +100,7 @@
                 </a>
             </div>
         @endauth
-    
+
         {{-- Guest Links --}}
         @guest
             <div class="flex flex-col md:flex-row px-4 py-2 gap-2">
@@ -112,9 +112,9 @@
                 </a>
             </div>
         @endguest
-    
+
         <hr class="border-gray-600">
-    
+
         {{-- Main Navigation --}}
         <div class="flex flex-col px-4 py-2 gap-2">
             <a href="{{ route('home') }}" class="flex items-center gap-2 hover:bg-gray-700 px-4 py-2 rounded">
@@ -128,7 +128,7 @@
             </a>
         </div>
     </nav>
-    
+
     <section class="relative h-screen flex flex-col-reverse md:flex-row items-center justify-center">
 
         <div class="absolute inset-0 clip-diagonal"></div>
@@ -150,16 +150,20 @@
             </a>
         </div>
 
-      <model-viewer
-                  src="image/house_door.glb"
-                  class=" items-center relative w-full md:w-1/3 sm:w-1/2 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] "
-                  camera-controls
-                  auto-rotate
-                  style="background: transparent;">
-              </model-viewer>
-        
+        <model-viewer
+            src="image/pintu77.glb"
+            class=" items-center relative w-full md:w-1/3 sm:w-1/3 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] "
+            camera-controls
+            shadow-intensity="1"
+            auto-rotate
+            shadow-softness="1"
+            exposure="1"
+            environment-image="https://modelviewer.dev/shared-assets/environments/neutral.hdr"
+            style="background: transparent;">
+        </model-viewer>
+
     </section>
-    
+
     </section>
 
 

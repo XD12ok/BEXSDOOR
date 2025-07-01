@@ -22,6 +22,7 @@ return new class extends Migration
                 'processing',   // Sedang diproses
                 'shipped',      // Sudah dikirim
                 'delivered',    // Sampai ke pembeli
+                'success',      // sudah berhasil
                 'cancelled',    // Dibatalkan
                 'failed'        // Gagal
             ])->default('pending');

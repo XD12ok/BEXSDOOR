@@ -15,54 +15,53 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" integrity="sha384-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+          integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- App CSS via Vite -->
     @vite('resources/css/app.css')
 
-    <!-- Defer JS scripts for performance -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJ+..." crossorigin="anonymous" defer></script>
-
-    <!-- Optional: load Swiper JS later in <body> or defer if used -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script> -->
+    <!-- Chart.js + jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" integrity="sha384-XcdcwHqIPULERb2yDEM4R0XaQKU3YnDsrTmjACBZyfdVVqjh6xQ4/DCMd7XLcA6Y" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
 </head>
 
-<body>
-<!-- Mobile Sidebar Toggle -->
+<body class="bg-[#fef9f4]">
+<!-- Mobile Sidebar Toggle Button -->
 <div class="md:hidden fixed top-4 left-4 z-50">
     <button id="sidebarToggle" class="text-white bg-[#89652f] p-2 rounded focus:outline-none">
         ☰
     </button>
 </div>
 
+
 <!-- Sidebar -->
 <aside id="sidebar"
-       class="fixed top-0 left-0 bottom-0 w-64 bg-[#89652f] text-white p-4 flex flex-col h-screen z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto">
-    <div class="text-2xl font-bold mb-8 flex items-center gap-2">
+       class="fixed top-0 left-0 bottom-0 w-64 bg-[#89652f] text-white p-4 flex flex-col h-screen z-40
+    transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out
+    overflow-y-auto">
+
+    <div class="mb-8 flex items-center gap-2">
         <img src="/image/logos-removebg-preview 1.png" alt="Logo" class="w-40" />
     </div>
+
     <nav class="flex-1 space-y-6">
         <a href="/home"
            class="block py-2 px-4 rounded {{ Request::is('home') ? 'bg-[#64502a]' : 'hover:bg-[#a77c37]' }}">
             BEXSDOOR
         </a>
-
         <a href="/admin/dashboard"
            class="block py-2 px-4 rounded {{ Request::is('admin/dashboard') ? 'bg-[#64502a]' : 'hover:bg-[#a77c37]' }}">
             Dashboard
         </a>
-
         <a href="/admin/products"
            class="block py-2 px-4 rounded {{ Request::is('admin/products') ? 'bg-[#64502a]' : 'hover:bg-[#a77c37]' }}">
             Produk
         </a>
-
         <a href="/orders"
            class="block py-2 px-4 rounded {{ Request::is('orders*') ? 'bg-[#64502a]' : 'hover:bg-[#a77c37]' }}">
             Pesanan
         </a>
-
         <a href="/admin/transaksi"
            class="block py-2 px-4 rounded {{ Request::is('admin/transaksi') ? 'bg-[#64502a]' : 'hover:bg-[#a77c37]' }}">
             Transaksi
@@ -70,9 +69,45 @@
     </nav>
 </aside>
 
-<main class="p-4 lg:ml-64">
+<!-- Main Content -->
+<main class="p-4 transition-all duration-300 md:ml-64">
     @yield('content')
 </main>
 
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<!-- Sidebar Toggle Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById('sidebar');
+        const toggleBtn = document.getElementById('sidebarToggle');
+
+        toggleBtn.addEventListener('click', () => {
+        const isOpen = !sidebar.classList.contains('-translate-x-full');
+
+        // Toggle sidebar visibility
+        sidebar.classList.toggle('-translate-x-full');
+
+        // Sembunyikan tombol saat sidebar dibuka
+        if (!isOpen) {
+        toggleBtn.classList.add('hidden');
+    }
+
+        // Deteksi klik di luar sidebar (untuk close dan tampilkan tombol lagi)
+        const handleClickOutside = (e) => {
+        if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
+        sidebar.classList.add('-translate-x-full');
+        toggleBtn.classList.remove('hidden');
+        document.removeEventListener('click', handleClickOutside);
+    }
+    };
+
+        setTimeout(() => {
+        document.addEventListener('click', handleClickOutside);
+    }, 10); // delay agar klik tombol tidak langsung trigger close
+    });
+    });
+</script>
 </body>
+</html>

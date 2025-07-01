@@ -1,7 +1,5 @@
 import './bootstrap';
 import $ from 'jquery';
-fetch('/api/cart-items')
+// fetch('/api/cart-items')
 
 window.$ = $;
-
-

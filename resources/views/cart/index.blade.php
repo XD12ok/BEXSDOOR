@@ -3,7 +3,15 @@
 @section('content')
     <div class="min-h-screen bg-gray-100 flex justify-center">
         <div class="w-full max-w-4xl bg-white p-6 shadow-lg rounded-lg mt-6">
-            <h1 class="text-xl font-bold mb-4">Keranjang Belanja</h1>
+            <div class=" flex justify-between mb-5">
+                <h1 class="text-xl font-bold mb-4">Keranjang Belanja</h1>
+                <a href="{{route('orders.history')}}">
+                    <button class="bg-black rounded-2xl text-white py-2 px-4 rounded hover:bg-gray-800">
+                        Riwayat belanja
+                    </button>
+                </a>
+
+            </div>
 
             <!-- ✅ DAFTAR PRODUK -->
             @foreach($cartItems as $item)
@@ -47,8 +55,8 @@
                             onclick="if(confirm('Hapus item ini?')) document.getElementById('delete-form-{{ $item->id }}').submit();"
                             class="text-red-600 hover:text-red-800 font-bold ml-2"
                         ><span class="material-symbols-outlined">
-delete
-</span></button>
+                                                                        delete
+                                                                </span></button>
 
                         <form id="delete-form-{{ $item->id }}"
                               action="{{ route('cart.remove', $item->id) }}"
@@ -91,6 +99,8 @@ delete
                                value="{{ old('kode_pos',Auth::user()->kode_pos ?? '') }}" required>
 
                         <textarea name="alamat" placeholder="Alamat lengkap" class="w-full border px-3 py-2 rounded" required>{{ old('alamat',Auth::user()->alamat ?? '') }}</textarea>
+
+                        <div class="text-sm mx-auto w-fit text-gray-500 text-center">Pastikan formulir diisi dengan benar dan tepat!</div>
 
                         <button type="button" id="pay-button" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800">
                             Pembayaran

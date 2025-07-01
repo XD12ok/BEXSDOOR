@@ -28,7 +28,7 @@
         </div>
 
         <!-- Form -->
-        <form action= " " method="POST" class="w-full max-w-sm space-y-3">
+        <form action= "" method="POST" class="w-full max-w-sm space-y-3">
             @csrf
             <a href="{{ url('/auth/google') }}">
                 <button type="button" class="w-full border border-gray-300 py-2 rounded-md flex items-center justify-center space-x-2 hover:bg-gray-100">
@@ -43,10 +43,8 @@
                 <span>Or</span>
                 <div class="flex-1 h-px bg-gray-300"></div>
             </div>
-{{--            @error('email') <small class="text-[#FF0000]">please enter correctly</small> @enderror--}}
             <input type="email" placeholder="E-mail"
                    class="w-full px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300" name="email" value="{{old('email')}}"/>
-{{--            @error('password') <small class="text-[#FF0000]">please enter your password correctly</small> @enderror--}}
             <input type="password" placeholder="Password"
                    class="w-full px-2 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300" name="password"/>
 

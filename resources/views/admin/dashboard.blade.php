@@ -2,48 +2,47 @@
 
 @section('content')
     <div class="p-6 bg-[#fef9f4] min-h-screen">
+        <span class="text-lg font-bold ml-3">DashBoard Penjualan</span>
 
         {{-- Stat Box --}}
-        <div class="grid grid-cols-5 gap-4 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 mt-4">
             <div class="bg-white rounded-xl p-4 shadow">
                 <div class="text-sm text-gray-600">Total Penjualan</div>
                 <div class="text-2xl font-bold text-black">{{ $totalPenjualan }}</div>
             </div>
-
             <div class="bg-white rounded-xl p-4 shadow">
                 <div class="text-sm text-gray-600">Jumlah Transaksi</div>
                 <div class="text-2xl font-bold text-black">{{ $jumlahTransaksi }}</div>
             </div>
-
             <div class="bg-white rounded-xl p-4 shadow">
                 <div class="text-sm text-gray-600">Pendapatan bulan ini</div>
                 <div class="text-2xl font-bold text-black">Rp{{ number_format($pendapatanBulanIni, 0, ',', '.') }}</div>
             </div>
-
             <div class="bg-white rounded-xl p-4 shadow">
                 <div class="text-sm text-gray-600">Pendapatan tahun ini</div>
                 <div class="text-2xl font-bold text-black">Rp{{ number_format($pendapatanTahunIni, 0, ',', '.') }}</div>
             </div>
-
         </div>
 
         {{-- Grafik Ringkasan --}}
         <div class="bg-white rounded-xl p-4 shadow mb-6">
             <div class="flex justify-between items-center mb-2">
                 <h2 class="font-semibold text-black">Ringkasan Penjualan</h2>
-                <label>Bulanan</label>
+                <label class="text-sm text-gray-500">Bulanan</label>
             </div>
-            <div class="bg-gray-100 h-40 flex items-center justify-center text-gray-500 text-sm">
-                    <canvas id="salesChart" height="100" width="800"></canvas>
+            <div class="overflow-x-auto">
+                <div class="min-w-[600px]">
+                    <canvas id="salesChart" height="300"></canvas>
+                </div>
             </div>
         </div>
 
         {{-- Penjualan Terakhir & Produk Populer --}}
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {{-- Penjualan Terakhir --}}
-            <div class="bg-white rounded-xl p-4 shadow">
+            <div class="bg-white rounded-xl p-4 shadow overflow-x-auto">
                 <h2 class="font-semibold text-black mb-4">Penjualan Terakhir</h2>
-                <table class="w-full text-sm">
+                <table class="w-full text-sm min-w-[500px]">
                     <thead>
                     <tr class="text-left text-gray-600 border-b">
                         <th>Pembeli</th>
@@ -67,19 +66,21 @@
 
             {{-- Produk Populer --}}
             <div class="bg-white rounded-xl p-4 shadow">
-                <label>Produk populer</label>
-
-                <ul class="text-sm mt-3">
+                <h2 class="font-semibold text-black mb-4">Produk Populer</h2>
+                <ul class="text-sm space-y-1">
                     @foreach ($produkPopuler as $produk)
-                        <li class="flex justify-between mb-1">
+                        <li class="flex justify-between">
                             <span>{{ $produk->name }}</span>
                             <span>{{ $produk->total_terjual }}x</span>
                         </li>
+                        <hr>
                     @endforeach
                 </ul>
             </div>
+        </div>
     </div>
 
+    {{-- Chart Script --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('salesChart').getContext('2d');
@@ -99,17 +100,24 @@
                         {{ $penjualanPerBulan[$bulan] ?? 0 }},
                     @endforeach
                 ],
-                backgroundColor: '#EEB657',
-                borderRadius: 8,
-                barThickness: 32,
+                borderColor: '#EEB657',
+                backgroundColor: '#FFFFFF',
+                tension: 0.4,
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                pointBackgroundColor: '#ffffff',
+                pointBorderColor: '#EEB657',
+                pointBorderWidth: 3,
+                fill: false
             }]
         };
 
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: data,
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -126,6 +134,4 @@
             }
         });
     </script>
-
-
 @endsection

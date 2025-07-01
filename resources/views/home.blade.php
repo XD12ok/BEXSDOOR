@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="w-full max-w-6xl mx-auto">
-        <div class="swiper heroSwiper rounded-4xl my-8 h-[38vh] sm:h-[40vh] md:h-[400px]">
+        <div class="swiper heroSwiper my-8 h-[38vh] sm:h-[40vh] md:h-[400px]">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="/image/carousel/Group 70.png" class="drop-shadow-lg h-full w-full object-cover" alt="Hero 1">
@@ -22,7 +22,7 @@
     {{-- Kategori --}}
     <section class="max-w-7xl mx-auto py-6 px-4">
             <h2 class="text-xl font-semibold mb-4">Categories</h2>
-    
+
             <!-- Pembungkus scroll -->
             <div class="overflow-x-auto">
                 <!-- Baris item kategori -->
@@ -116,9 +116,9 @@
             <div>
                 <h4 class="font-semibold mb-2">Socials</h4>
                 <div class="flex gap-2">
-                <a href="#"><img src="icons/instagram.svg" class="" alt="instagram"></a>
-                <a href="#"><img src="icons/facebook.svg" class="" alt="facebook"></a>
-                <a href="#"><img src="icons/tiktok.svg" class="w-[24px] h-[24px]" alt="tiktok"></a>
+                <a href="#"><img src="image/instagram.svg" class="" alt="instagram"></a>
+                <a href="#"><img src="image/facebook.svg" class="" alt="facebook"></a>
+                <a href="#"><img src="image/tiktok.svg" class="w-[24px] h-[24px]" alt="tiktok"></a>
                 </div>
             </div>
             <div>

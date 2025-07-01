@@ -11,11 +11,10 @@
         <form action="{{ route('admin.orders.update', $order->id) }}" method="POST">
             @csrf
             @method('PUT')
-
             <div class="mb-4">
                 <label class="block font-semibold mb-1">Status</label>
                 <select name="status" class="w-full border rounded p-2">
-                    @foreach(['pending', 'paid', 'processing', 'shipped', 'delivered', 'cancelled', 'failed'] as $status)
+                    @foreach(['pending', 'paid', 'processing', 'shipped', 'delivered','success', 'cancelled', 'failed'] as $status)
                         <option value="{{ $status }}" {{ $order->status == $status ? 'selected' : '' }}>
                             {{ ucfirst($status) }}
                         </option>
@@ -23,7 +22,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
                 Simpan
             </button>
         </form>
