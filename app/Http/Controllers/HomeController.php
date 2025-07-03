@@ -14,7 +14,6 @@ class HomeController extends Controller
             ->take(5)
             ->get();
         $newProducts = Product::latest()->take(5)->get();
-        $newProducts = Product::latest()->take(5)->get();
 
         return view('home', compact('featuredProducts', 'newProducts'));
     }

@@ -95,7 +95,7 @@
 <!-- Rekomendasi -->
 <div class="px-8 py-7">
     <h2 class="text-lg font-semibold mb-4">Anda mungkin juga suka</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 shadow">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 shadow">
         <!-- Produk rekomendasi -->
             @foreach($featuredProducts as $item)
                 <x-product-card :product="$item" />
