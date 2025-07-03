@@ -14,16 +14,10 @@ class DatabaseSeeder extends Seeder
         $userData = [
             [
                 'name' =>'Admin',
-                'email' =>'Admin@gmail.com',
+                'email' =>'AdminBEXSDOOR!@Admin.com',
                 'role' =>'admin',
-                'password' => bcrypt('Admin'),
+                'password' => bcrypt('AdminOKE01'),
 
-            ],
-            [
-                'name' =>'User',
-                'email' =>'User@gmail.com',
-                'role' =>'user',
-                'password' => bcrypt('User'),
             ]
         ];
 
